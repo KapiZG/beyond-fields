@@ -18,7 +18,7 @@ const CONFERENCE_INFO = {
   address: 'ul. prof. Zygmunta Szafrana 4a',
   city: 'Zielona Góra',
   contactEmail: 'kolo.quanta.uz@gmail.com',
-  buildingImageSrc: './assets/aistudio/obraz_9eb1e4c2.png',
+  buildingImageSrc: './assets/other/obraz_9eb1e4c2.png',
   fundingNotice: 'Zadanie finansowane z Środków Ministra Nauki i Szkolnictwa Wyższego umowa nr MNISW/2026/DAP/114',
 };
 
