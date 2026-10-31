@@ -1,0 +1,88 @@
+/* Beyond fields – Style arkusza CSS (Czysty CSS / Vanilla) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;700;800&display=swap');
+
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #f1f5f9;
+  background-color: #0c0d10;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Subtelny wzorzec tła (siatka punktowa) */
+.grid-pattern {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* Czysty, nowoczesny ciemny scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0d10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262930;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b3f49;
+}
+
+/* Ukrycie paska przewijania w karuzeli plakatów z zachowaniem płynnego scrollowania */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animacje i efekty */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Lightbox overlay styling */
+#poster-lightbox.hidden {
+  display: none;
+}
+#poster-lightbox:not(.hidden) {
+  display: flex;
+}
+
+/* Mobile menu dropdown */
+#mobile-menu.hidden {
+  display: none;
+}
+
+/* Line clamp utilities for vanilla CSS */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

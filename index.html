@@ -1,9 +1,1101 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!doctype html>
+<html lang="pl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beyond fields – Konferencja Studencka | Koło Naukowe Quanta</title>
+    <meta name="description" content="Oficjalna strona-wizytówka studenckiej konferencji naukowej Beyond fields organizowanej przez Koło Naukowe Quanta. Program, prelegenci, plakaty promocyjne, lokalizacja i formularz rejestracji." />
+    
+    <!-- Open Graph & Social Cards -->
+    <meta property="og:title" content="Beyond fields – Konferencja Studencka | Koło Naukowe Quanta" />
+    <meta property="og:description" content="Oficjalna strona-wizytówka studenckiej konferencji naukowej Beyond fields organizowanej przez Koło Naukowe Quanta. Program, prelegenci, plakaty promocyjne, lokalizacja i formularz rejestracji." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-</head>
-<body>
-Beyond fields site
-</body>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Oficjalny Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+              heading: ['Space Grotesk', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+            colors: {
+              neutral: {
+                850: '#1f2026',
+                950: '#0c0d10',
+              }
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./assets/other/beyond_fields_logo.svg">
+
+    <!-- Style bazowe CSS -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Skrypt funkcjonalny JS -->
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="bg-neutral-950 text-neutral-100 antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- 1. PASEK NAWIGACJI (NAVBAR) -->
+    <header id="navbar-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-8 h-20">
+          
+          <!-- Logo & Brand Wordmark -->
+          <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center gap-3.5 group whitespace-nowrap shrink-0 text-white">
+            <div class="relative w-10 h-10 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <img src="./assets/other/beyond_fields_logo.svg" alt="Beyond fields Logo" class="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(176,42,55,0.3)]" />
+            </div>
+            <div class="flex flex-col">
+              <span class="font-heading font-extrabold text-lg tracking-tight text-white group-hover:text-red-500 transition-colors">
+                BEYOND <span class="text-red-600 font-normal italic font-serif">fields</span>
+              </span>
+              <span class="text-[10px] uppercase tracking-wider text-neutral-400 font-mono">
+                Quanta Science Club
+              </span>
+            </div>
+          </a>
+
+          <!-- Menu Desktop -->
+          <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-300">
+            <a href="#o-konferencji" class="hover:text-white transition-colors whitespace-nowrap shrink-0">O konferencji</a>
+            <a href="#plakaty" class="hover:text-white transition-colors whitespace-nowrap shrink-0">Plakaty</a>
+            <a href="#program" class="hover:text-white transition-colors whitespace-nowrap shrink-0">Harmonogram</a>
+            <a href="#materialy" class="hover:text-white transition-colors whitespace-nowrap shrink-0">Materiały</a>
+            <a href="#lokalizacja" class="hover:text-white transition-colors whitespace-nowrap shrink-0">Lokalizacja</a>
+            <a href="#kontakt" class="hover:text-white transition-colors whitespace-nowrap shrink-0">Kontakt</a>
+          </nav>
+
+          <!-- Przycisk Rejestracji CTA -->
+          <div class="hidden md:flex items-center gap-3 shrink-0">
+            <a href="#rejestracja" class="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-lg transition-all duration-200 shadow-md shadow-red-950/40 hover:shadow-red-900/30 whitespace-nowrap">
+              <span>Zarejestruj się</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+
+          <!-- Przycisk Menu Mobilnego -->
+          <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" type="button" class="p-2 text-neutral-400 hover:text-white focus:outline-none" aria-label="Menu">
+              <svg id="menu-icon-open" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+              <svg id="menu-icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu mobilne rozwijane -->
+      <div id="mobile-menu" class="hidden md:hidden bg-neutral-950/95 backdrop-blur-xl border-b border-neutral-800 px-6 py-6 space-y-4">
+        <a href="#o-konferencji" class="block w-full text-left py-2 text-neutral-300 hover:text-white font-medium">O konferencji</a>
+        <a href="#plakaty" class="block w-full text-left py-2 text-neutral-300 hover:text-white font-medium">Plakaty promocyjne</a>
+        <a href="#program" class="block w-full text-left py-2 text-neutral-300 hover:text-white font-medium">Harmonogram</a>
+        <a href="#materialy" class="block w-full text-left py-2 text-neutral-300 hover:text-white font-medium">Materiały po konferencji</a>
+        <a href="#lokalizacja" class="block w-full text-left py-2 text-neutral-300 hover:text-white font-medium">Lokalizacja & Dojazd</a>
+        <a href="#kontakt" class="block w-full text-left py-2 text-neutral-300 hover:text-white font-medium">Kontakt</a>
+        <div class="pt-2">
+          <a href="#rejestracja" class="w-full inline-flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white bg-red-600 rounded-lg shadow-md hover:bg-red-700">
+            <span>Zarejestruj się (Google Forms)</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- GŁÓWNA ZAWARTOŚĆ STRONY -->
+    <main class="flex-1">
+
+      <!-- 2. SEKCJA HERO -->
+      <section class="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-neutral-950">
+        <!-- Efekty oświetlenia i siatka tła -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-red-950/20 rounded-full blur-[140px]"></div>
+          <div class="absolute bottom-10 right-10 w-[500px] h-[500px] bg-neutral-900/40 rounded-full blur-[120px]"></div>
+          <div class="absolute inset-0 opacity-[0.03] grid-pattern"></div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto w-full text-center z-10 flex flex-col items-center">
+          
+          <!-- Oficjalny medalion / logo koła (wektorowe SVG bez tła) -->
+          <div class="mb-8 flex flex-col items-center group relative">
+            <!-- Subtelna poświata świetlna podkreślająca przezroczystość grafiki wektorowej -->
+            <div class="absolute -inset-4 bg-gradient-to-tr from-red-600/25 via-red-950/15 to-transparent rounded-full blur-3xl pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+            <div class="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 flex items-center justify-center p-2 transition-transform duration-500 group-hover:scale-105">
+              <img src="./assets/other/beyond_fields_logo.svg" alt="Beyond fields – project by Quanta science club" class="w-full h-full object-contain filter drop-shadow-[0_12px_32px_rgba(0,0,0,0.85)] group-hover:drop-shadow-[0_16px_40px_rgba(220,38,38,0.35)] transition-all duration-500" />
+            </div>
+
+            <div class="mt-4 flex items-center gap-2.5 text-xs font-mono tracking-widest uppercase text-neutral-400">
+              <span class="text-neutral-300 font-medium">project by Quanta science club</span>
+              <span class="text-red-500">·</span>
+              <span class="text-red-400 font-semibold">Beyond limits</span>
+            </div>
+          </div>
+
+          <!-- Nagłówek główny -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-extrabold tracking-tight text-white max-w-4xl leading-[1.1] text-balance">
+            Przekraczając granice pojedynczych dyscyplin.
+          </h1>
+
+          <!-- Podtytuł merytoryczny -->
+          <p class="mt-6 text-lg sm:text-xl text-neutral-300 max-w-2xl font-normal leading-relaxed text-balance">
+            Uczelniana konferencja studencka organizowana przez <strong class="text-white font-medium">Koło Naukowe Quanta</strong>. Zderzamy perspektywy prawa, sztucznej inteligencji, kognitywistyki, ekonomii i biotechnologii.
+          </p>
+
+          <!-- Pasek metadanych wydarzenia -->
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-y-3 gap-x-6 text-sm text-neutral-300 font-medium py-3 px-6 rounded-2xl bg-neutral-900/60 border border-neutral-800 backdrop-blur-sm">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Wtorek, 17 listopada 2026</span>
+            </div>
+            <span class="text-neutral-600 hidden sm:inline">·</span>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>08:30 – 17:30</span>
+            </div>
+            <span class="text-neutral-600 hidden sm:inline">·</span>
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Budynek A-29 (Kampus A, Uniwersytet Zielonogórski), sala 106</span>
+            </div>
+          </div>
+
+          <!-- Przyciski akcji -->
+          <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <a href="#rejestracja" class="w-full sm:w-auto px-8 py-4 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-xl transition-all duration-200 shadow-xl shadow-red-950/40 hover:shadow-red-900/50 flex items-center justify-center gap-2 group">
+              <span>Zarejestruj się (Google Forms)</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#program" class="w-full sm:w-auto px-8 py-4 text-sm font-medium text-neutral-200 hover:text-white bg-neutral-900/90 hover:bg-neutral-800 border border-neutral-700/80 rounded-xl transition-colors flex items-center justify-center gap-2">
+              <span>Harmonogram wystąpień</span>
+              <svg class="w-4 h-4 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+            </a>
+          </div>
+
+          <!-- Teaser pytań z plakatów (3 rzędy kafelków) -->
+          <div class="mt-14 w-full max-w-4xl border-t border-neutral-800/80 pt-8">
+            <p class="text-xs font-mono uppercase tracking-widest text-neutral-400 mb-4 text-center">
+              Pytania, które zainspirowały nasze plakaty promocyjne:
+            </p>
+
+            <div class="space-y-2.5 sm:space-y-3">
+              <!-- Wiersz 1: Plakat 1 (Główny) + Plakat 2 -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3">
+                <button type="button" data-hero-poster-idx="0" class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl transition-all text-left flex items-center justify-between gap-3 cursor-pointer group shadow-lg bg-red-950/80 border-2 border-red-500 shadow-red-950/50 text-white ring-1 ring-red-500/40">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-red-400 font-mono text-[11px] font-bold shrink-0">★ GŁÓWNY:</span>
+                    <span class="font-semibold italic text-neutral-200 group-hover:text-white leading-snug">„A co, jeśli świat nie jest podzielony tak, jak podzieliliśmy go my?”</span>
+                  </div>
+                  <svg class="w-3.5 h-3.5 text-red-400 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+
+                <button type="button" data-hero-poster-idx="1" class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl transition-all text-left flex items-center justify-between gap-3 cursor-pointer group bg-neutral-900/80 hover:bg-neutral-800/90 border border-neutral-800 hover:border-red-900/60 text-neutral-300 hover:text-white">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-red-500 font-mono text-[11px] font-semibold shrink-0 group-hover:underline">PLAKAT #02:</span>
+                    <span class="italic leading-snug">„A jeśli obie strony mają rację?”</span>
+                  </div>
+                  <svg class="w-3.5 h-3.5 text-neutral-500 group-hover:text-red-400 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+
+              <!-- Wiersz 2: Plakat 3 + Plakat 4 -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3">
+                <button type="button" data-hero-poster-idx="2" class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl transition-all text-left flex items-center justify-between gap-3 cursor-pointer group bg-neutral-900/80 hover:bg-neutral-800/90 border border-neutral-800 hover:border-red-900/60 text-neutral-300 hover:text-white">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-red-500 font-mono text-[11px] font-semibold shrink-0 group-hover:underline">PLAKAT #03:</span>
+                    <span class="italic leading-snug">„Czy świat brzmiałby tak samo, gdyby nikt go nie słuchał?”</span>
+                  </div>
+                  <svg class="w-3.5 h-3.5 text-neutral-500 group-hover:text-red-400 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+
+                <button type="button" data-hero-poster-idx="3" class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl transition-all text-left flex items-center justify-between gap-3 cursor-pointer group bg-neutral-900/80 hover:bg-neutral-800/90 border border-neutral-800 hover:border-red-900/60 text-neutral-300 hover:text-white">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-red-500 font-mono text-[11px] font-semibold shrink-0 group-hover:underline">PLAKAT #04:</span>
+                    <span class="italic leading-snug">„Jeśli zmienimy wszystko, co tworzy człowieka, kto pozostanie?”</span>
+                  </div>
+                  <svg class="w-3.5 h-3.5 text-neutral-500 group-hover:text-red-400 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+
+              <!-- Wiersz 3: Plakat 5 + Zobacz wszystkie 13 plakatów -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-3">
+                <button type="button" data-hero-poster-idx="4" class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl transition-all text-left flex items-center justify-between gap-3 cursor-pointer group bg-neutral-900/80 hover:bg-neutral-800/90 border border-neutral-800 hover:border-red-900/60 text-neutral-300 hover:text-white">
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span class="text-red-500 font-mono text-[11px] font-semibold shrink-0 group-hover:underline">PLAKAT #05:</span>
+                    <span class="italic leading-snug">„Czy mechanizm może działać, jeśli nie powinien istnieć?”</span>
+                  </div>
+                  <svg class="w-3.5 h-3.5 text-neutral-500 group-hover:text-red-400 shrink-0 opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+
+                <button id="hero-explore-all-btn" type="button" class="w-full text-xs sm:text-sm px-4 py-3 rounded-xl bg-neutral-900/50 hover:bg-neutral-850 border border-dashed border-red-800/70 hover:border-red-500 text-neutral-200 hover:text-white transition-all cursor-pointer flex items-center justify-center gap-2 group shadow-sm hover:shadow-red-950/30">
+                  <span class="font-medium tracking-wide">Zobacz wszystkie 13 plakatów</span>
+                  <svg class="w-4 h-4 text-red-500 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. SEKCJA O KONFERENCJI (OPARTA NA MATERIAŁACH INSTYTUTU I NOTATCE) -->
+      <section id="o-konferencji" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto space-y-16">
+          
+          <!-- Nagłówek sekcji i wprowadzenie -->
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-800/40 text-xs font-mono uppercase tracking-widest text-red-400 mb-4">
+              <svg class="w-3.5 h-3.5 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>Inicjatywa naukowa</span>
+              <span>·</span>
+              <span>Koło Naukowe Fizyki „Quanta”</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight text-balance">
+              O konferencji Beyond Fields.
+            </h2>
+            <p class="mt-5 text-base sm:text-lg text-neutral-300 font-normal leading-relaxed text-balance">
+              <strong class="text-white font-semibold">Beyond Fields</strong> to ogólnouczelniana inicjatywa naukowa organizowana przez <strong class="text-white font-semibold">Koło Naukowe Fizyki „Quanta”</strong>, działające na Uniwersytecie Zielonogórskim. Jej celem jest stworzenie dynamicznej przestrzeni do wymiany wiedzy, prezentacji wyników badań oraz inspirującej dyskusji nad współczesnymi wyzwaniami i problemami nauki.
+            </p>
+            <p class="mt-3 text-sm sm:text-base text-neutral-400 font-normal leading-relaxed text-balance">
+              Konferencja integruje środowisko akademickie – od studentów i młodych badaczy po doświadczonych naukowców – wspierając współpracę międzysektorową i interdyscyplinarne podejście do nauki. To także okazja do zadawania pytań, przekraczania barier między dyscyplinami i rozwijania pomysłów, z których mogą powstać nowe inicjatywy badawcze.
+            </p>
+          </div>
+
+          <!-- Blok 1: Dlaczego warto wziąć udział? (3 Filary Wartości) -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-2 h-2 rounded-full bg-red-500"></span>
+              <h3 class="text-xl sm:text-2xl font-heading font-bold text-white tracking-tight">
+                Dlaczego warto wziąć udział?
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <!-- Filar 1: Przekraczanie granic dyscyplin -->
+              <div class="p-8 rounded-3xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-all duration-200 flex flex-col justify-between group shadow-xl">
+                <div>
+                  <div class="w-12 h-12 rounded-2xl bg-neutral-800/90 border border-neutral-700/60 text-red-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><path d="M10.4 13.6 6.5 17.5"/><path d="m13.6 10.4 3.9-3.9"/><circle cx="5" cy="5" r="2"/><path d="M6.5 6.5 10.4 10.4"/><circle cx="19" cy="19" r="2"/><path d="m13.6 13.6 3.9 3.9"/></svg>
+                  </div>
+                  <h4 class="text-xl font-heading font-bold text-white mb-3">
+                    Przekraczanie granic dyscyplin
+                  </h4>
+                  <p class="text-sm text-neutral-400 leading-relaxed">
+                    Łączymy fizykę z innymi dziedzinami nauki, tworząc grunt pod nowe pomysły, przełomowe koncepcje i międzyobszarowe inicjatywy badawcze.
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-neutral-800/80 text-xs font-mono text-red-400 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                  <span>Interdyscyplinarna perspektywa</span>
+                </div>
+              </div>
+
+              <!-- Filar 2: Networking i współpraca -->
+              <div class="p-8 rounded-3xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-all duration-200 flex flex-col justify-between group shadow-xl">
+                <div>
+                  <div class="w-12 h-12 rounded-2xl bg-neutral-800/90 border border-neutral-700/60 text-red-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <h4 class="text-xl font-heading font-bold text-white mb-3">
+                    Networking i współpraca
+                  </h4>
+                  <p class="text-sm text-neutral-400 leading-relaxed">
+                    Idealna okazja do nawiązania kontaktów naukowych, wymiany doświadczeń między kołami oraz dołączenia do interdyscyplinarnych zespołów projektowych.
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-neutral-800/80 text-xs font-mono text-red-400 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                  <span>Integracja środowiska akademickiego</span>
+                </div>
+              </div>
+
+              <!-- Filar 3: Rozwój naukowy i feedback -->
+              <div class="p-8 rounded-3xl bg-neutral-900/50 border border-neutral-800 hover:border-neutral-700 transition-all duration-200 flex flex-col justify-between group shadow-xl">
+                <div>
+                  <div class="w-12 h-12 rounded-2xl bg-neutral-800/90 border border-neutral-700/60 text-red-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20"/><path d="m17 5-5-3-5 3"/><path d="m17 19-5 3-5-3"/><path d="M2 12h20"/><path d="m5 7-3 5 3 5"/><path d="m19 7 3 5-3 5"/></svg>
+                  </div>
+                  <h4 class="text-xl font-heading font-bold text-white mb-3">
+                    Rozwój naukowy i feedback
+                  </h4>
+                  <p class="text-sm text-neutral-400 leading-relaxed">
+                    Otrzymasz cenny feedback od specjalistów z różnych dziedzin, udoskonalisz swój warsztat prezentacyjny i wspólnie poszukamy odpowiedzi na nurtujące pytania.
+                  </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-neutral-800/80 text-xs font-mono text-red-400 flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                  <span>Wsparcie doświadczonych badaczy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blok 2: Program i przebieg wydarzenia (4 Format Blocks) -->
+          <div class="p-8 sm:p-10 rounded-3xl bg-neutral-900/40 border border-neutral-800/80 shadow-2xl backdrop-blur-sm">
+            <div class="max-w-2xl mb-8">
+              <span class="text-xs font-mono uppercase tracking-widest text-red-500 block mb-2">
+                Struktura wydarzenia
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-heading font-bold text-white">
+                Program i przebieg wydarzenia
+              </h3>
+              <p class="mt-2 text-sm sm:text-base text-neutral-400 leading-relaxed">
+                Wydarzenie kładzie nacisk na konfrontowanie różnych perspektyw i poszukiwanie nowych kierunków badawczych. W programie konferencji znajdują się:
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <!-- Punkt 1: Wystąpienia prelegentów -->
+              <div class="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 hover:border-neutral-700 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12"/><circle cx="17" cy="7" r="5"/></svg>
+                </div>
+                <h4 class="text-base font-heading font-bold text-white mb-2">
+                  Wystąpienia prelegentów
+                </h4>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Prezentacje autorskich badań, projektów naukowych i koncepcji przygotowanych przez studentów oraz doktorantów.
+                </p>
+              </div>
+
+              <!-- Punkt 2: Dyskusje panelowe -->
+              <div class="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 hover:border-neutral-700 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h4 class="text-base font-heading font-bold text-white mb-2">
+                  Dyskusje panelowe
+                </h4>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Otwarte panele dyskusyjne – okazja do zadawania pytań, polemiki i bezpośredniej wymiany spostrzeżeń z ekspertami.
+                </p>
+              </div>
+
+              <!-- Punkt 3: Sesja posterowa -->
+              <div class="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 hover:border-neutral-700 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <h4 class="text-base font-heading font-bold text-white mb-2">
+                  Sesja posterowa
+                </h4>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Strefa prezentacji prac badawczych w formie plakatów naukowych na korytarzu 1. piętra oraz swobodnych rozmów kuluarowych.
+                </p>
+              </div>
+
+              <!-- Punkt 4: Stanowiska kół naukowych -->
+              <div class="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 hover:border-neutral-700 transition-colors">
+                <div class="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+                </div>
+                <h4 class="text-base font-heading font-bold text-white mb-2">
+                  Stanowiska kół naukowych
+                </h4>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Możliwość zaprezentowania profilu koła naukowego, demonstracji aparatury, projektów inżynierskich i dotychczasowych osiągnięć.
+                </p>
+              </div>
+            </div>
+
+            <!-- Podsumowanie z terminem zgłoszeń i CTA -->
+            <div class="mt-8 pt-6 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+              <div class="flex items-center gap-2.5 text-neutral-300">
+                <svg class="w-4 h-4 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Termin nadsyłania zgłoszeń: <strong class="text-white font-semibold">do 10 listopada 2026 r.</strong></span>
+              </div>
+              <a href="#rejestracja" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 active:bg-red-800 text-white font-medium text-xs transition-colors inline-flex items-center gap-2 shadow-md shadow-red-950/40">
+                <span>Przejdź do formularzy rejestracji</span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. SEKCJA PLAKATÓW (SLIDER & LIGHTBOX) -->
+      <section id="plakaty" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950/80 border-t border-neutral-800/80 relative">
+        <div class="max-w-7xl mx-auto space-y-12">
+          
+          <!-- Nagłówek sekcji -->
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-800/40 text-xs font-mono uppercase tracking-widest text-red-400 mb-4">
+              <svg class="w-3.5 h-3.5 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+              <span>Kampania wizualna konferencji</span>
+              <span>·</span>
+              <span>13 plakatów</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-extrabold text-white tracking-tight leading-tight text-balance">
+              Pytania, które zdefiniowały Beyond fields.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-neutral-300 font-normal leading-relaxed text-balance">
+              Plakaty przygotowane przez Koło Naukowe Quanta poruszają kluczowe dylematy ze styku nauk ścisłych, społecznych i humanistycznych. Główny plakat stawia fundamentalne pytanie o zasadność granic, jakimi podzieliliśmy naszą wiedzę o świecie.
+            </p>
+          </div>
+
+          <!-- Karta wyróżnionego plakatu (High-Res + Analiza) -->
+          <div id="featured-poster-card" class="scroll-mt-24 bg-neutral-900/40 border border-neutral-800/80 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl backdrop-blur-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              
+              <!-- Lewa kolumna: Duży podgląd plakatu -->
+              <div class="lg:col-span-6 flex flex-col items-center">
+                <div class="relative group w-full max-w-sm sm:max-w-md mx-auto aspect-[3/4] rounded-2xl overflow-hidden border border-neutral-800 bg-neutral-900/90 shadow-2xl flex items-center justify-center p-3">
+                  <img id="featured-poster-img" src="./assets/posters/poster_01.svg" alt="A co, jeśli świat nie jest podzielony tak, jak podzieliliśmy go my?" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
+
+                  <!-- Nakładka hover z przyciskiem podglądu -->
+                  <button type="button" class="lightbox-trigger absolute inset-0 bg-neutral-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col items-center justify-center gap-3 cursor-pointer p-6 text-center backdrop-blur-xs">
+                    <div class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-xl transform transition-transform duration-200 group-hover:scale-110">
+                      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                    </div>
+                    <span class="text-sm font-semibold text-white">
+                      Kliknij, aby otworzyć pełny podgląd plakatu
+                    </span>
+                    <span class="text-xs text-neutral-400 font-mono">
+                      Format wystawowy B1 · Podgląd wysokiej rozdzielczości (Wektorowy SVG)
+                    </span>
+                  </button>
+
+                  <!-- Badge w lewym górnym rogu -->
+                  <div class="absolute top-4 left-4 flex items-center gap-2">
+                    <div id="featured-poster-badge" class="px-3 py-1 rounded-md text-xs font-mono font-medium backdrop-blur-md border bg-red-600/90 border-red-500 text-white shadow-lg shadow-red-950/50">
+                      ★ GŁÓWNY PLAKAT KONFERENCJI
+                    </div>
+                  </div>
+
+                  <!-- Zoom button dla urządzeń dotykowych -->
+                  <button type="button" class="lightbox-trigger absolute bottom-4 right-4 p-2.5 rounded-lg bg-neutral-950/80 border border-neutral-700 text-neutral-300 hover:text-white lg:hidden backdrop-blur-md cursor-pointer" title="Powiększ">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                  </button>
+                </div>
+
+                <!-- Kontrolki nawigacji pod plakatem -->
+                <div class="mt-5 flex items-center justify-between w-full max-w-sm sm:max-w-md px-1">
+                  <div class="flex items-center gap-2">
+                    <button id="poster-prev-btn" type="button" class="p-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-mono" aria-label="Poprzedni plakat">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                      <span class="hidden sm:inline">Poprzedni</span>
+                    </button>
+                    <button id="poster-next-btn" type="button" class="p-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 active:bg-neutral-700 border border-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 text-xs font-mono" aria-label="Następny plakat">
+                      <span class="hidden sm:inline">Następny</span>
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                  </div>
+
+                  <div class="text-right">
+                    <span id="poster-index-indicator" class="text-xs font-mono text-neutral-400">
+                      Plakat <strong class="text-white">01</strong> z 13
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Prawa kolumna: Analiza kuratorska & pobieranie -->
+              <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+                <div class="space-y-5">
+                  <div class="flex flex-wrap items-center gap-2.5 text-xs font-mono uppercase tracking-wider">
+                    <span id="featured-poster-theme" class="px-2.5 py-1 rounded bg-red-950/60 border border-red-800/60 text-red-400 font-semibold">
+                      Główny Plakat Konferencji
+                    </span>
+                    <span class="text-neutral-500">/</span>
+                    <span id="featured-poster-subtext" class="text-neutral-400">
+                      Idea przewodnia Beyond fields
+                    </span>
+                  </div>
+
+                  <h3 id="featured-poster-question" class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-red-500 tracking-tight leading-snug">
+                    „A co, jeśli świat nie jest podzielony tak, jak podzieliliśmy go my?”
+                  </h3>
+
+                  <p id="featured-poster-desc" class="text-neutral-300 text-base sm:text-lg leading-relaxed">
+                    Główny motyw przewodni konferencji Beyond fields. Granice między dziedzinami wiedzy to wytwór człowieka — realne wyzwania współczesnego świata wymykają się tradycyjnym podziałom akademickim.
+                  </p>
+                </div>
+
+                <div class="pt-6 border-t border-neutral-800/80 flex flex-wrap items-center gap-3">
+                  <a id="featured-poster-download" href="./assets/posters/poster_01.svg" download="beyond-fields-poster-divided.svg" class="px-5 py-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-sm font-medium text-neutral-300 hover:text-white transition-colors flex items-center gap-2">
+                    <svg class="w-4 h-4 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Pobierz plakat (SVG)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Karuzela miniatur wszystkich 13 plakatów -->
+          <div id="poster-gallery-slider" class="scroll-mt-28 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <h3 class="text-lg font-heading font-bold text-white tracking-tight">
+                  Galeria wszystkich plakatów (13)
+                </h3>
+                <span class="text-xs font-mono text-neutral-400 hidden sm:inline">
+                  · Kliknij miniaturę, aby wyświetlić szczegóły
+                </span>
+              </div>
+              <div id="track-counter" class="text-xs font-mono text-neutral-400">
+                Plakat 1 z 13
+              </div>
+            </div>
+
+            <div class="relative group/track">
+              <!-- Przyciski nawigacji poziomej o jeden cały plakat -->
+              <button id="track-scroll-left" type="button" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 z-20 p-2.5 sm:p-3 rounded-full bg-neutral-900/95 hover:bg-neutral-800 active:bg-neutral-700 text-white border border-neutral-700 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95" aria-label="Poprzedni plakat">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button id="track-scroll-right" type="button" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 z-20 p-2.5 sm:p-3 rounded-full bg-neutral-900/95 hover:bg-neutral-800 active:bg-neutral-700 text-white border border-neutral-700 shadow-2xl backdrop-blur-md flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95" aria-label="Następny plakat">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+
+              <!-- Kontener ze scrollem miniatur o pełny plakat -->
+              <div id="poster-track" class="relative flex gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 px-1 scroll-smooth no-scrollbar" style="scroll-snap-type: x mandatory; scroll-padding-left: 0.25rem;">
+                <!-- Wstrzykiwane przez JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SEKCJA HARMONOGRAMU -->
+      <section id="program" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950 border-t border-neutral-800">
+        <div class="max-w-5xl mx-auto">
+          <!-- Nagłówek sekcji + filtry -->
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-red-500 mb-2">
+                <span>Program wydarzenia</span>
+                <span>·</span>
+                <span>Wtorek, 17.11.2026</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight text-balance">
+                Harmonogram konferencji.
+              </h2>
+              <p class="mt-3 text-neutral-400 text-base max-w-xl">
+                Bloki referatowe, pokazy stanowisk kół naukowych oraz networking, od porannej rejestracji o 08:30 do zakończenia VI bloku o 17:30.
+              </p>
+            </div>
+
+            <!-- Kontrolki segmentowe filtrów -->
+            <div class="flex items-center gap-1 p-1 bg-neutral-900 border border-neutral-800 rounded-xl self-start md:self-auto shrink-0">
+              <button id="filter-all" type="button" class="px-4 py-2 text-xs font-medium rounded-lg transition-colors cursor-pointer bg-neutral-800 text-white shadow-sm">
+                Pełny program (13)
+              </button>
+              <button id="filter-sessions" type="button" class="px-4 py-2 text-xs font-medium rounded-lg transition-colors cursor-pointer text-neutral-400 hover:text-neutral-200">
+                Bloki referatowe (7)
+              </button>
+              <button id="filter-breaks" type="button" class="px-4 py-2 text-xs font-medium rounded-lg transition-colors cursor-pointer text-neutral-400 hover:text-neutral-200">
+                Przerwy & Wydarzenia (6)
+              </button>
+            </div>
+          </div>
+
+          <!-- Oś czasu (Timeline) -->
+          <div id="schedule-timeline" class="space-y-3">
+            <!-- Wstrzykiwane dynamicznie przez JS -->
+          </div>
+
+          <!-- Notatka o harmonogramie -->
+          <div class="mt-8 p-4 rounded-xl bg-neutral-900/60 border border-neutral-800 flex items-start gap-3 text-neutral-300 text-xs sm:text-sm">
+            <svg class="w-4 h-4 text-red-400 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <p class="leading-relaxed text-neutral-300">
+              <strong class="text-white font-medium">Uwaga:</strong> Harmonogram może ulec zmianie w zależności od ilości referatów.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. SEKCJA LOKALIZACJI -->
+      <section id="lokalizacja" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto">
+          <div class="max-w-3xl mb-12">
+            <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-red-500 mb-2">
+              <span>Miejsce wydarzenia</span>
+              <span>·</span>
+              <span>Uniwersytet Zielonogórski</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight text-balance">
+              Lokalizacja konferencji.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-neutral-400 font-normal leading-relaxed text-balance">
+              Konferencja odbywa się na Kampusie A Uniwersytetu Zielonogórskiego. Wszystkie wykłady, stanowiska kół naukowych oraz prezentacje posterów zlokalizowane są na 1. piętrze budynku A-29.
+            </p>
+          </div>
+
+          <!-- Karta lokalizacji 2-kolumnowa -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch bg-neutral-900/50 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl">
+            
+            <!-- Lewa kolumna: Zdjęcie Budynku A-29 -->
+            <div class="lg:col-span-7 relative min-h-[340px] lg:min-h-[460px] bg-neutral-900 overflow-hidden">
+              <img src="./assets/other/obraz_9eb1e4c2.png" alt="Budynek A-29, Kampus A, Uniwersytet Zielonogórski" class="w-full h-full object-cover object-top" />
+              <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/95 via-neutral-950/25 to-transparent"></div>
+              
+              <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
+                <div>
+                  <span class="text-xs font-mono uppercase tracking-wider text-red-400 block mb-1">
+                    Kampus A · Uniwersytet Zielonogórski
+                  </span>
+                  <h3 class="text-xl sm:text-2xl font-heading font-bold">
+                    Budynek A-29
+                  </h3>
+                  <p class="text-xs sm:text-sm text-neutral-300 mt-0.5">
+                    ul. prof. Zygmunta Szafrana 4a, Zielona Góra
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prawa kolumna: Szczegóły sali i nawigacja -->
+            <div class="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+              <div>
+                <h3 class="text-lg font-heading font-bold text-white mb-6">
+                  Dane przestrzeni konferencyjnej
+                </h3>
+
+                <div class="space-y-4">
+                  <!-- Obiekt -->
+                  <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-neutral-900/80 border border-neutral-800">
+                    <div class="p-2 rounded-lg bg-neutral-800 text-red-500 shrink-0">
+                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                    </div>
+                    <div>
+                      <span class="text-xs font-mono text-neutral-400 block">Obiekt & Kampus</span>
+                      <span class="text-sm font-semibold text-white">Budynek A-29 (Kampus A)</span>
+                      <span class="text-xs text-neutral-400 block mt-0.5">Uniwersytet Zielonogórski</span>
+                    </div>
+                  </div>
+
+                  <!-- Piętro -->
+                  <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-neutral-900/80 border border-neutral-800">
+                    <div class="p-2 rounded-lg bg-neutral-800 text-red-500 shrink-0">
+                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+                    </div>
+                    <div>
+                      <span class="text-xs font-mono text-neutral-400 block">Kondygnacja</span>
+                      <span class="text-sm font-semibold text-white">1. piętro</span>
+                    </div>
+                  </div>
+
+                  <!-- Sala -->
+                  <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-neutral-900/80 border border-neutral-800">
+                    <div class="p-2 rounded-lg bg-neutral-800 text-red-500 shrink-0">
+                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h20"/><path d="M13 20V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v16"/><circle cx="10" cy="12" r="1"/></svg>
+                    </div>
+                    <div>
+                      <span class="text-xs font-mono text-neutral-400 block">Sala wykładowa</span>
+                      <span class="text-sm font-semibold text-white">sala 106</span>
+                    </div>
+                  </div>
+
+                  <!-- Korytarz -->
+                  <div class="flex items-start gap-3.5 p-3.5 rounded-xl bg-neutral-900/80 border border-neutral-800">
+                    <div class="p-2 rounded-lg bg-neutral-800 text-red-500 shrink-0">
+                      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+                    </div>
+                    <div>
+                      <span class="text-xs font-mono text-neutral-400 block">Korytarz przy sali 106</span>
+                      <span class="text-sm font-semibold text-white">Strefa posterów & Stanowiska kół</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 p-4 rounded-xl bg-neutral-900/40 border border-neutral-800/60 text-xs text-neutral-400">
+                  <p class="leading-relaxed">
+                    Postery naukowe będą prezentowane bezpośrednio na korytarzu 1. piętra wraz ze stanowiskami kół naukowych, tworząc otwartą przestrzeń dyskusji i networkingu.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Przycisk Google Maps -->
+              <div class="pt-6 border-t border-neutral-800">
+                <a href="https://www.google.com/maps/search/?api=1&query=Uniwersytet%20Zielonog%C3%B3rski%20Budynek%20A-29%2C%20ul.%20prof.%20Zygmunta%20Szafrana%204a%2C%20Zielona%20G%C3%B3ra" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-xl transition-all shadow-lg shadow-red-950/40 hover:shadow-red-900/40 flex items-center justify-center gap-2 cursor-pointer group">
+                  <svg class="w-4 h-4 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                  <span>Otwórz lokalizację w Google Maps</span>
+                  <svg class="w-3.5 h-3.5 text-red-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <span class="block text-center text-[11px] font-mono text-neutral-400 mt-2">
+                  ul. prof. Zygmunta Szafrana 4a, Zielona Góra
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. SEKCJA REJESTRACJI (GOOGLE FORMS) -->
+      <section id="rejestracja" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-900/40 border-t border-neutral-800">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-red-500 mb-2">
+              <span>Rejestracja</span>
+              <span>·</span>
+              <span>Google Forms</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight text-balance">
+              Zapisz się na Beyond fields 2026.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-neutral-400 font-normal leading-relaxed text-balance">
+              Termin nadsyłania zgłoszeń: <strong class="text-white font-medium">do 10 listopada 2026 r.</strong> Wybierz odpowiedni formularz poniżej, aby zgłosić swój udział indywidualny lub zarejestrować reprezentowane koło naukowe. Wstęp jest w 100% bezpłatny.
+            </p>
+          </div>
+
+          <!-- Kafelki korzyści -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+            <div class="p-4 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center gap-3">
+              <svg class="w-5 h-5 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              <div>
+                <span class="text-xs font-semibold text-white block">Wstęp bezpłatny</span>
+                <span class="text-[11px] text-neutral-400">Dla każdego</span>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center gap-3">
+              <svg class="w-5 h-5 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+              <div>
+                <span class="text-xs font-semibold text-white block">Certyfikat uczestnictwa</span>
+                <span class="text-[11px] text-neutral-400">Imienny dokument potwierdzający obecność</span>
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center gap-3">
+              <svg class="w-5 h-5 text-red-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <div>
+                <span class="text-xs font-semibold text-white block">Catering & Kawa</span>
+                <span class="text-[11px] text-neutral-400">Przerwy kawowe i obiad dla osób zgłoszonych</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Główna karta z formularzem -->
+          <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-4 sm:p-8 lg:p-10 shadow-2xl">
+            
+            <!-- Przełącznik zakładek -->
+            <div class="mb-8">
+              <label class="text-xs font-mono uppercase tracking-wider text-neutral-400 block mb-3 text-center sm:text-left">
+                Wybierz rodzaj formularza zgłoszeniowego
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-1.5 bg-neutral-900 border border-neutral-800 rounded-2xl">
+                <!-- Tab Uczestnik -->
+                <button id="form-tab-attendee" type="button" class="py-3.5 px-4 rounded-xl text-left transition-all duration-200 cursor-pointer flex items-center gap-3.5 bg-neutral-800 text-white shadow-md border border-neutral-700/80 ring-1 ring-red-500/30">
+                  <div class="tab-icon-box w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors bg-red-600 text-white">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </div>
+                  <div>
+                    <span class="text-sm font-semibold block leading-tight">Dla uczestników</span>
+                    <span class="text-xs text-neutral-400 block mt-0.5">Rejestracja indywidualna studenta</span>
+                  </div>
+                </button>
+
+                <!-- Tab Koło -->
+                <button id="form-tab-club" type="button" class="py-3.5 px-4 rounded-xl text-left transition-all duration-200 cursor-pointer flex items-center gap-3.5 text-neutral-400 hover:text-neutral-200 hover:bg-neutral-800/40">
+                  <div class="tab-icon-box w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors bg-neutral-800 text-neutral-400">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
+                  <div>
+                    <span class="text-sm font-semibold block leading-tight">Dla kół naukowych</span>
+                    <span class="text-xs text-neutral-400 block mt-0.5">Zgłoszenie koła</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Nagłówek aktywnego formularza -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 border-b border-neutral-800">
+              <div>
+                <h3 id="form-header-title" class="text-xl sm:text-2xl font-heading font-bold text-white">
+                  Uczestnik konferencji
+                </h3>
+                <p id="form-header-desc" class="text-xs sm:text-sm text-neutral-400 mt-1">
+                  Zgłoszenie udziału w wykładach i panelach w sali 106 (Budynek A-29, Kampus A UZ).
+                </p>
+              </div>
+              <span id="form-header-badge" class="text-xs font-mono text-neutral-400 bg-neutral-900 border border-neutral-800 px-3 py-1.5 rounded-lg shrink-0">
+                Dla uczestników
+              </span>
+            </div>
+
+            <!-- Kontener osadzonego iframe Google Form -->
+            <div class="mt-6 rounded-2xl overflow-hidden border border-neutral-800 bg-white">
+              <iframe id="google-form-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSdqJ8D9NkohwtImvwpMx22R9me1j6E802GXwBSuQvHMwKiStg/viewform?embedded=true" title="Formularz rejestracji - Uczestnik konferencji" width="100%" height="1380" class="w-full border-0 block" loading="lazy">
+                Ładuję formularz rejestracji…
+              </iframe>
+            </div>
+
+            <!-- Dyskretny link bezpośredni pod formularzem -->
+            <div class="mt-8 pt-6 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400">
+              <span>
+                Wolisz wypełnić w osobnym oknie lub formularz nie wyświetla się poprawnie?
+              </span>
+              <a id="form-direct-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdqJ8D9NkohwtImvwpMx22R9me1j6E802GXwBSuQvHMwKiStg/viewform?usp=dialog" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-xs font-medium text-neutral-400 hover:text-neutral-200 bg-neutral-900/80 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 rounded-lg transition-colors inline-flex items-center gap-1.5 shrink-0">
+                <span id="form-direct-link-text">Zarejestruj się przez bezpośredni link</span>
+                <svg class="w-3.5 h-3.5 text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. SEKCJA MATERIAŁÓW POKONFERENCYJNYCH -->
+      <section id="materialy" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-900/40 border-t border-neutral-800">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-red-500 mb-2">
+              <span>Po konferencji</span>
+              <span>·</span>
+              <span>Materiały & Archiwum</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight text-balance">
+              Materiały pokonferencyjne.
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-neutral-400 font-normal leading-relaxed text-balance">
+              Po zakończeniu wydarzenia na tej stronie opublikujemy pełną dokumentację i materiały związane z konferencją Beyond fields.
+            </p>
+          </div>
+
+          <!-- 3 Karty Materiałów -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Galeria -->
+            <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl group hover:border-neutral-700 transition-colors">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+                </div>
+                <h3 class="text-xl font-heading font-bold text-white mb-2">
+                  Galeria zdjęć
+                </h3>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Fotorelacja z przebiegu konferencji: wykładów w sali 106 oraz stoisk kół naukowych na korytarzu.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-neutral-800/80 flex items-center gap-2 text-xs font-mono text-neutral-400">
+                <svg class="w-3.5 h-3.5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Publikacja: po 17.11.2026</span>
+              </div>
+            </div>
+
+            <!-- Książka abstraktów -->
+            <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl group hover:border-neutral-700 transition-colors">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                </div>
+                <h3 class="text-xl font-heading font-bold text-white mb-2">
+                  Książka abstraktów
+                </h3>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Elektroniczne wydanie oficjalnej książki abstraktów, zawierającej streszczenia nadesłanych prac, referatów i projektów.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-neutral-800/80 flex items-center gap-2 text-xs font-mono text-neutral-400">
+                <svg class="w-3.5 h-3.5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Plik PDF do pobrania</span>
+              </div>
+            </div>
+
+            <!-- Sprawozdanie -->
+            <div class="bg-neutral-950 border border-neutral-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl group hover:border-neutral-700 transition-colors">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 text-red-500 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                </div>
+                <h3 class="text-xl font-heading font-bold text-white mb-2">
+                  Sprawozdanie & Podziękowania
+                </h3>
+                <p class="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                  Oficjalne sprawozdanie Koła Naukowego Quanta, podziękowania dla prelegentów, kół naukowych i uczestników oraz podsumowanie przebiegu konferencji.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-neutral-800/80 flex items-center gap-2 text-xs font-mono text-neutral-400">
+                <svg class="w-3.5 h-3.5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
+                <span>Podsumowanie organizatorów</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Komunikat powiadomienia -->
+          <div class="p-5 rounded-2xl bg-neutral-950/70 border border-neutral-800 text-center">
+            <p class="text-xs sm:text-sm text-neutral-400">
+              Wszyscy zarejestrowani uczestnicy otrzymają również bezpośrednie powiadomienie mailowe w momencie udostępnienia galerii oraz książki abstraktów.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. SEKCJA KONTAKTU -->
+      <section id="kontakt" class="py-24 px-4 sm:px-6 lg:px-8 bg-neutral-950 border-t border-neutral-800">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-red-500 mb-2">
+              <span>Kontakt bezpośredni</span>
+              <span>·</span>
+              <span>Organizatorzy</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white tracking-tight text-balance">
+              Masz pytania do organizatorów?
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-neutral-400 font-normal leading-relaxed text-balance">
+              Skontaktuj się bezpośrednio z komitetem organizacyjnym konferencji ze strony Koła Naukowego Quanta.
+            </p>
+          </div>
+
+          <!-- Karta kontaktu (Poczta elektroniczna) -->
+          <div class="max-w-2xl mx-auto">
+            <div class="bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700/90 rounded-3xl p-8 sm:p-10 flex flex-col justify-between transition-all duration-200 shadow-2xl group">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <div class="relative w-14 h-14 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                    <img src="./assets/other/beyond_fields_logo.svg" alt="Koło Naukowe Quanta" class="w-full h-full object-contain filter drop-shadow-[0_2px_10px_rgba(176,42,55,0.35)]" />
+                  </div>
+                  <div>
+                    <span class="text-xs font-mono uppercase tracking-wider text-red-500 font-semibold block">
+                      Koło Naukowe Quanta
+                    </span>
+                    <span class="text-xs text-neutral-400 block mt-0.5">
+                      Oficjalny adres kontaktowy konferencji
+                    </span>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <span class="text-xs font-mono uppercase tracking-wider text-neutral-400 block">
+                    Poczta elektroniczna
+                  </span>
+                  <a href="mailto:kolo.quanta.uz@gmail.com" class="text-2xl sm:text-3xl font-heading font-extrabold text-white hover:text-red-400 transition-colors break-all inline-block">
+                    kolo.quanta.uz@gmail.com
+                  </a>
+                  <p class="mt-4 text-sm text-neutral-400 leading-relaxed">
+                    Pytania dotyczące programu konferencji, certyfikatów uczestnictwa, współpracy i stoisk kół naukowych, zgłoszeń referatów oraz kwestii organizacyjnych.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-8 pt-6 border-t border-neutral-800/80 flex flex-col sm:flex-row items-center gap-3">
+                <a href="mailto:kolo.quanta.uz@gmail.com" class="w-full sm:flex-1 py-3.5 px-6 text-sm font-semibold text-white bg-red-600 hover:bg-red-700 active:bg-red-800 rounded-xl transition-colors text-center flex items-center justify-center gap-2 shadow-lg shadow-red-950/40">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg>
+                  <span>Napisz wiadomość e-mail</span>
+                </a>
+                <button id="copy-email-btn" type="button" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-all duration-200 cursor-pointer flex items-center justify-center gap-2 text-sm font-medium border border-neutral-700 group/btn" title="Skopiuj adres email" aria-label="Skopiuj email">
+                  <svg class="w-4 h-4 text-neutral-400 group-hover/btn:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span id="copy-email-text">Skopiuj adres</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 10. STOPKA (FOOTER) -->
+    <footer class="bg-neutral-950 border-t border-neutral-800/80 py-8 px-4 sm:px-6 lg:px-8 text-neutral-400">
+      <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Wiersz górny: Nawigacja oraz Informacja o autorze -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-x-5 gap-y-1.5 font-medium text-neutral-400">
+            <a href="#o-konferencji" class="hover:text-white transition-colors">O konferencji</a>
+            <a href="#plakaty" class="hover:text-white transition-colors">Plakaty</a>
+            <a href="#program" class="hover:text-white transition-colors">Harmonogram</a>
+            <a href="#materialy" class="hover:text-white transition-colors">Materiały</a>
+            <a href="#lokalizacja" class="hover:text-white transition-colors">Lokalizacja</a>
+            <a href="#rejestracja" class="hover:text-white transition-colors">Rejestracja</a>
+            <a href="#kontakt" class="hover:text-white transition-colors">Kontakt</a>
+          </div>
+
+          <div class="font-mono text-neutral-400 text-center md:text-right text-[11px]">
+            <span>Projekt wykonany przez <span class="text-neutral-200 font-medium">Kacpra Mańkowskiego</span> przy wsparciu AI</span>
+          </div>
+        </div>
+
+        <!-- Sekcja Partnerów i Finansowania Projektu (zwarty układ bezpośrednio z tekstem dofinansowania, bez oddzielającej kreski) -->
+        <div class="pt-2 flex flex-col items-center gap-3.5 text-center">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400">
+            Partnerzy & Instytucje Wspierające Projekt
+          </span>
+
+          <div class="flex flex-wrap items-center justify-center gap-5 sm:gap-8 lg:gap-10">
+            <!-- Uniwersytet Zielonogórski (bez zaokrąglania rogów) -->
+            <div class="flex items-center justify-center h-11 sm:h-12 px-3 py-1.5 bg-white shadow-sm transition-transform duration-200 hover:scale-105">
+              <img src="./assets/other/logo_UZ_pion_-_CMYK_c15d74ae.jpg" alt="Uniwersytet Zielonogórski" class="max-h-full max-w-[130px] sm:max-w-[150px] object-contain" />
+            </div>
+
+            <!-- Ministerstwo Nauki i Szkolnictwa Wyższego -->
+            <div class="flex items-center justify-center h-11 sm:h-12 px-2 py-0.5 transition-transform duration-200 hover:scale-105 opacity-90 hover:opacity-100">
+              <img src="./assets/other/02_znak__siatka_podstawowy_kolor_ciemne_tlo_2f687847.png" alt="Dofinansowano ze środków Ministra Nauki i Szkolnictwa Wyższego" class="max-h-full max-w-[210px] sm:max-w-[250px] object-contain filter drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
+            </div>
+
+            <!-- Dofinansowano ze środków budżetu państwa -->
+            <div class="flex items-center justify-center h-11 sm:h-12 px-2 py-0.5 transition-transform duration-200 hover:scale-105 opacity-90 hover:opacity-100">
+              <img src="./assets/other/02_znak__siatka_podstawowy_kolor_ciemne_tlo_2291319e.png" alt="Dofinansowano ze środków budżetu państwa" class="max-h-full max-w-[210px] sm:max-w-[250px] object-contain filter drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
+            </div>
+          </div>
+
+          <!-- Informacja o dofinansowaniu bezpośrednio pod logami bez oddzielającej kreski -->
+          <p class="text-[11px] text-neutral-400 font-normal leading-relaxed max-w-2xl mx-auto pt-0.5">
+            Zadanie finansowane z Środków Ministra Nauki i Szkolnictwa Wyższego umowa nr MNISW/2026/DAP/114
+          </p>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- LIGHTBOX / MODAL PEŁNOEKRANOWY (UKRYTY DOMYŚLNIE) -->
+    <div id="poster-lightbox" role="dialog" aria-modal="true" class="hidden fixed inset-0 z-50 bg-neutral-950/95 backdrop-blur-md items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200">
+      <div class="relative max-w-4xl max-h-[92vh] w-full flex flex-col items-center">
+        <!-- Pasek górny Lightboxa -->
+        <div class="w-full flex items-center justify-between pb-4 border-b border-neutral-800 text-neutral-300">
+          <div class="flex items-center gap-3">
+            <span id="lb-poster-badge" class="font-mono text-xs sm:text-sm font-semibold px-2.5 py-1 rounded bg-red-600 text-white">
+              PLAKAT #01 · GŁÓWNY
+            </span>
+            <span class="text-neutral-500 hidden sm:inline">·</span>
+            <span id="lb-poster-title" class="text-sm font-medium text-white truncate max-w-xs sm:max-w-md">
+              A co, jeśli świat nie jest podzielony tak, jak podzieliliśmy go my?
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <a id="lb-poster-download" href="./assets/posters/poster_01.svg" download="beyond-fields-plakat.svg" class="p-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-neutral-300 hover:text-white transition-colors" title="Pobierz plakat (SVG)">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </a>
+            <button id="lightbox-close-btn" type="button" class="p-2 rounded-lg bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-neutral-300 hover:text-white transition-colors cursor-pointer" title="Zamknij podgląd (Esc)">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Obraz plakatu w lightboxie -->
+        <div class="relative mt-4 max-h-[75vh] flex items-center justify-center w-full">
+          <img id="lb-poster-img" src="./assets/posters/poster_01.svg" alt="Podgląd plakatu" class="max-h-[72vh] w-auto object-contain rounded-xl shadow-2xl border border-neutral-800" />
+          
+          <button id="lightbox-prev-btn" type="button" class="absolute left-2 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 hover:bg-neutral-900 text-white border border-neutral-700 shadow-xl backdrop-blur-sm transition-all cursor-pointer" aria-label="Poprzedni">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button id="lightbox-next-btn" type="button" class="absolute right-2 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neutral-900/80 hover:bg-neutral-900 text-white border border-neutral-700 shadow-xl backdrop-blur-sm transition-all cursor-pointer" aria-label="Następny">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Stopka lightboxa -->
+        <div class="mt-4 flex flex-col sm:flex-row items-center justify-between w-full text-xs font-mono text-neutral-400 gap-2">
+          <span id="lb-poster-footer">
+            Główny Plakat Konferencji · 1 z 13
+          </span>
+          <span>
+            Użyj strzałek na klawiaturze (← / →), aby przesuwać · Esc, aby zamknąć
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </body>
 </html>
